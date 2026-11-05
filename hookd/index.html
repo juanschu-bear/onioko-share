@@ -148,7 +148,8 @@ svg.paths path.live.m{stroke:var(--mara);filter:drop-shadow(0 0 6px rgba(242,193
 .blk{border:1px solid var(--line);border-radius:18px;padding:16px 18px;background:var(--card)}
 .blk .k{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;margin-bottom:6px}
 .blk .k svg{width:30px;height:30px;flex:none}
-.blk .k small{font-weight:600;color:var(--mute);font-size:13px;letter-spacing:.04em}
+.blk .k span{min-width:0}
+.blk .k small{display:block;font-weight:600;color:var(--mute);font-size:13px;letter-spacing:.04em;line-height:1.3;margin-top:2px}
 .blk p{margin:0;color:#ddd9e3;font-size:15px}
 .blk.on{border-color:rgba(155,123,255,.55);background:linear-gradient(135deg,rgba(155,123,255,.16),rgba(155,123,255,.03));box-shadow:0 20px 60px rgba(155,123,255,.12)}
 .blk .here{display:inline-block;margin-top:10px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--onioko);border:1px solid rgba(155,123,255,.5);border-radius:999px;padding:3px 10px}
@@ -186,6 +187,8 @@ svg.paths path.live.m{stroke:var(--mara);filter:drop-shadow(0 0 6px rgba(242,193
 .hero .punch{font-size:clamp(19px,1.7vw,24px);max-width:760px}
 .hero .meta{max-width:720px;font-size:17px}
 .hero .meta b{color:#d9d0ff}
+.gloss{display:flex;flex-wrap:wrap;gap:6px 22px;margin:14px 0 0;font-size:13.5px;line-height:1.45;color:var(--mute);max-width:720px}
+.gloss b{color:#d9d0ff;letter-spacing:.06em;margin-right:6px}
 .hero-art{position:relative;width:100%;max-width:430px;aspect-ratio:3/4;margin:0 auto;perspective:1500px}
 .hero-art .halo{position:absolute;inset:-6%;border-radius:50%;background:radial-gradient(closest-side,rgba(155,123,255,.32),rgba(155,123,255,0));pointer-events:none}
 .rig{position:absolute;inset:4% 8%;transform-style:preserve-3d;transform:rotateY(-20deg) rotateX(8deg);animation:sway 9s ease-in-out infinite alternate}
@@ -236,10 +239,11 @@ svg.paths path.live.m{stroke:var(--mara);filter:drop-shadow(0 0 6px rgba(242,193
 
 /* mock app */
 .app{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#101014;box-shadow:0 30px 80px rgba(0,0,0,.5)}
-.app .bar{height:34px;display:flex;align-items:center;gap:8px;padding:0 12px;border-bottom:1px solid var(--line);background:#0b0b0f}
+.app .bar{min-height:34px;display:flex;align-items:center;gap:8px;padding:7px 12px;border-bottom:1px solid var(--line);background:#0b0b0f}
 .app .bar i{width:10px;height:10px;border-radius:50%;background:#2a2a32;display:inline-block}
-.app .bar b{margin-left:8px;font-size:12px;color:var(--mute);font-weight:600;letter-spacing:.04em}
-.app .bar .vt{margin-left:auto;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--onioko);border:1px solid rgba(155,123,255,.5);border-radius:999px;padding:3px 9px}
+.app .bar i{flex:none}
+.app .bar b{margin-left:8px;font-size:12px;color:var(--mute);font-weight:600;letter-spacing:.04em;flex:1;min-width:0;line-height:1.35}
+.app .bar .vt{flex:none;margin-left:auto;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--onioko);border:1px solid rgba(155,123,255,.5);border-radius:999px;padding:3px 9px}
 .app .body{padding:14px}
 .rows{display:grid;gap:8px}
 .row{display:grid;grid-template-columns:96px 1fr 1fr;gap:10px;align-items:start;font-size:14px;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05)}
@@ -261,7 +265,8 @@ svg.paths path.live.m{stroke:var(--mara);filter:drop-shadow(0 0 6px rgba(242,193
 .finale .punch{font-size:clamp(18px,1.9vw,24px)}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
 .val{border:1px solid var(--line);border-radius:18px;padding:20px;background:var(--card);position:relative;overflow:hidden}
-.val::before{content:attr(data-n);position:absolute;right:14px;top:6px;font-size:64px;font-weight:800;color:rgba(255,255,255,.05);letter-spacing:-.04em}
+.val .k,.val h3{padding-right:44px}
+.val::before{content:attr(data-n);position:absolute;right:14px;top:6px;font-size:56px;font-weight:800;color:rgba(255,255,255,.05);letter-spacing:-.04em}
 .val h3{font-size:20px;margin-bottom:8px;letter-spacing:-.01em}
 .val p{color:#ddd9e3;font-size:15px;margin:0}
 .val .k{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--onioko);font-weight:700;margin-bottom:10px}
@@ -292,6 +297,7 @@ footer{padding-top:30px;padding-bottom:60px;color:var(--mute);font-size:13px;bor
   .board{grid-template-columns:1fr}
   .board > div{border-right:0}
   .board .hd:not(:first-child){display:none}
+  .board .cell.x{display:none}
   .board .cell::before{content:attr(data-r);display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:3px}
   .row{grid-template-columns:1fr}
   .row.hd{display:none}
@@ -322,6 +328,7 @@ footer{padding-top:30px;padding-bottom:60px;color:var(--mute);font-size:13px;bor
 </svg></span> sieht, was funktioniert.</span><span class="t2"><i>ONIOKO</i> sieht den <em>Menschen</em> im Video.</span></h1>
       <p class="punch">Ich bin in der Founder-Runde dabei, weil HOOKD die Frage "Was poste ich als Nächstes?" sauberer beantwortet als alles, was ich kenne. Diese Seite zeigt, was wir bei ONIOKO bauen, und 3 Stellen, an denen es in HOOKD etwas Neues möglich machen könnte. Ob und wo, entscheidest du.</p>
       <p class="meta">Jedes Content-Tool liest an einem Video 2 Dinge: was gesagt wird und wie es gelaufen ist. Wir haben eigene Models gebaut, die eine dritte Sache lesen: wie der Mensch darin wirkt. <b>OPM</b> sieht Gesicht, Stimme und Körper, Abschnitt für Abschnitt. <b>OMM</b> merkt sich, wie sich das über Wochen entwickelt. Beides ist Technologie, die in Produkten arbeitet.</p>
+      <p class="gloss"><span><b>OPM</b> Observational Perception Models, unsere Wahrnehmung</span><span><b>OMM</b> Observational Memory Models, unser Gedächtnis</span></p>
     </div>
     <div class="hero-art" aria-label="Ein Reel in 3 Ebenen: das Video, darüber was HOOKD liest, ganz vorne was ONIOKO liest">
       <div class="halo"></div>
@@ -709,10 +716,10 @@ footer{padding-top:30px;padding-bottom:60px;color:var(--mute);font-size:13px;bor
   <div class="eng-grid">
     <div class="eng-art"><svg viewBox="-116 -242 779 344" role="img" aria-label="4 Bausteine: Wahrnehmung, Gedächtnis, Bedeutung, Präsenz. Wahrnehmung ist hervorgehoben."><defs><filter id="blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="18"/></filter></defs><line x1="0.0" y1="40.0" x2="190.5" y2="40.0" stroke="#9b7bff" stroke-opacity=".6" stroke-width="3" stroke-dasharray="4 8" stroke-linecap="round"><animate attributeName="stroke-dashoffset" values="0;-24" dur="1.6s" repeatCount="indefinite"/></line><line x1="190.5" y1="40.0" x2="381.1" y2="40.0" stroke="#9b7bff" stroke-opacity=".6" stroke-width="3" stroke-dasharray="4 8" stroke-linecap="round"><animate attributeName="stroke-dashoffset" values="0;-24" dur="1.6s" repeatCount="indefinite"/></line><line x1="381.1" y1="40.0" x2="571.6" y2="40.0" stroke="#9b7bff" stroke-opacity=".6" stroke-width="3" stroke-dasharray="4 8" stroke-linecap="round"><animate attributeName="stroke-dashoffset" values="0;-24" dur="1.6s" repeatCount="indefinite"/></line><ellipse cx="0.0" cy="46.0" rx="76" ry="42" fill="#000" fill-opacity=".45" filter="url(#blur)"/><ellipse class="glow" cx="0.0" cy="40.0" rx="92" ry="52" fill="#9b7bff" fill-opacity=".4" filter="url(#blur)"/><polygon points="-69.3,-6.0 0.0,34.0 0.0,80.0 -69.3,40.0" fill="#6c50d6"/><polygon points="69.3,-6.0 0.0,34.0 0.0,80.0 69.3,40.0" fill="#3e2d8a"/><polygon points="0.0,-46.0 69.3,-6.0 0.0,34.0 -69.3,-6.0" fill="#9b7bff"/><line x1="0.0" y1="-6.0" x2="0.0" y2="-44.0" stroke="#f4f2ee" stroke-opacity=".5" stroke-width="2"/><circle cx="0.0" cy="-76.0" r="32" fill="#6c50d6" stroke="#c4b3ff" stroke-width="2.5"/><use href="#i-eye" x="-19.8" y="-95.8" width="39.7" height="39.7" style="color:#f4f2ee"/><ellipse cx="190.5" cy="46.0" rx="76" ry="42" fill="#000" fill-opacity=".45" filter="url(#blur)"/><polygon points="121.2,16.0 190.5,56.0 190.5,80.0 121.2,40.0" fill="#2c2938"/><polygon points="259.8,16.0 190.5,56.0 190.5,80.0 259.8,40.0" fill="#1f1d28"/><polygon points="190.5,-24.0 259.8,16.0 190.5,56.0 121.2,16.0" fill="#3a3647"/><polygon points="190.5,-24.0 259.8,16.0 190.5,56.0 121.2,16.0" fill="none" stroke="#9b7bff" stroke-opacity=".4" stroke-width="1.6"/><line x1="190.5" y1="16.0" x2="190.5" y2="-15.0" stroke="#c4b3ff" stroke-opacity=".5" stroke-width="2"/><circle cx="190.5" cy="-42.0" r="27" fill="#26232f" stroke="#4a4658" stroke-width="2.5"/><use href="#i-head" x="173.8" y="-58.7" width="33.5" height="33.5" style="color:#c4b3ff"/><ellipse cx="381.1" cy="46.0" rx="76" ry="42" fill="#000" fill-opacity=".45" filter="url(#blur)"/><polygon points="311.8,16.0 381.1,56.0 381.1,80.0 311.8,40.0" fill="#2c2938"/><polygon points="450.3,16.0 381.1,56.0 381.1,80.0 450.3,40.0" fill="#1f1d28"/><polygon points="381.1,-24.0 450.3,16.0 381.1,56.0 311.8,16.0" fill="#3a3647"/><polygon points="381.1,-24.0 450.3,16.0 381.1,56.0 311.8,16.0" fill="none" stroke="#9b7bff" stroke-opacity=".4" stroke-width="1.6"/><line x1="381.1" y1="16.0" x2="381.1" y2="-15.0" stroke="#c4b3ff" stroke-opacity=".5" stroke-width="2"/><circle cx="381.1" cy="-42.0" r="27" fill="#26232f" stroke="#4a4658" stroke-width="2.5"/><use href="#i-nodes" x="364.3" y="-58.7" width="33.5" height="33.5" style="color:#c4b3ff"/><ellipse cx="571.6" cy="46.0" rx="76" ry="42" fill="#000" fill-opacity=".45" filter="url(#blur)"/><polygon points="502.3,16.0 571.6,56.0 571.6,80.0 502.3,40.0" fill="#2c2938"/><polygon points="640.9,16.0 571.6,56.0 571.6,80.0 640.9,40.0" fill="#1f1d28"/><polygon points="571.6,-24.0 640.9,16.0 571.6,56.0 502.3,16.0" fill="#3a3647"/><polygon points="571.6,-24.0 640.9,16.0 571.6,56.0 502.3,16.0" fill="none" stroke="#9b7bff" stroke-opacity=".4" stroke-width="1.6"/><line x1="571.6" y1="16.0" x2="571.6" y2="-15.0" stroke="#c4b3ff" stroke-opacity=".5" stroke-width="2"/><circle cx="571.6" cy="-42.0" r="27" fill="#26232f" stroke="#4a4658" stroke-width="2.5"/><use href="#i-avatar" x="554.8" y="-58.7" width="33.5" height="33.5" style="color:#c4b3ff"/><text class="lb" x="0.0" y="-124.0" text-anchor="middle" fill="#f4f2ee" font-size="22" font-weight="800" font-family="-apple-system,Inter,sans-serif">Wahrnehmung</text><text class="lb" x="0.0" y="-154.0" text-anchor="middle" fill="#c4b3ff" font-size="16" font-weight="800" letter-spacing="3" font-family="-apple-system,Inter,sans-serif">OPM</text><g transform="translate(0.0 -200.0)"><rect x="-92" y="-18" width="184" height="34" rx="17" fill="#1b1922" stroke="#9b7bff" stroke-width="1.8"/><text x="0" y="6" text-anchor="middle" fill="#c4b3ff" font-size="15" font-weight="800" letter-spacing="1.6" font-family="-apple-system,Inter,sans-serif">AUF DIESER SEITE</text></g><text class="lb" x="190.5" y="-85.0" text-anchor="middle" fill="#cfcbd6" font-size="22" font-weight="800" font-family="-apple-system,Inter,sans-serif">Gedächtnis</text><text class="lb" x="190.5" y="-115.0" text-anchor="middle" fill="#c4b3ff" font-size="16" font-weight="800" letter-spacing="3" font-family="-apple-system,Inter,sans-serif">OMM</text><text class="lb" x="381.1" y="-85.0" text-anchor="middle" fill="#cfcbd6" font-size="22" font-weight="800" font-family="-apple-system,Inter,sans-serif">Bedeutung</text><text class="lb" x="571.6" y="-85.0" text-anchor="middle" fill="#cfcbd6" font-size="22" font-weight="800" font-family="-apple-system,Inter,sans-serif">Präsenz</text></svg></div>
     <div class="blocks4">
-      <div class="blk on"><div class="k"><svg viewBox="0 0 100 100" style="color:#c4b3ff"><use href="#i-eye"/></svg><span>Wahrnehmung <small>· OPM</small></span></div><p>OPM ist unsere eigene Model-Familie für Wahrnehmung. Sie sieht und hört, wie ein Mensch etwas sagt: Gesicht, Stimme, Körper. Sie beschreibt Signale und vergibt keine Etiketten.</p><span class="here">Auf dieser Seite</span></div>
-      <div class="blk"><div class="k"><svg viewBox="0 0 100 100" style="color:#c4b3ff"><use href="#i-head"/></svg><span>Gedächtnis <small>· OMM</small></span></div><p>OMM ist unsere eigene Model-Familie für Gedächtnis. Sie hält zusammen, was über Wochen gesagt und beobachtet wurde, jede Zeile mit Datum und Quelle.</p></div>
-      <div class="blk"><div class="k"><svg viewBox="0 0 100 100" style="color:#c4b3ff"><use href="#i-nodes"/></svg><span>Bedeutung <small>· Muster</small></span></div><p>Erkennt, was sich wiederholt und was sich verändert, und trennt jede Ablesung in Beobachtung, Deutung und Hypothese.</p></div>
-      <div class="blk"><div class="k"><svg viewBox="0 0 100 100" style="color:#c4b3ff"><use href="#i-avatar"/></svg><span>Präsenz <small>· Extended Avatare</small></span></div><p>Unser eigenes Produkt auf dieser Technologie: Extended Avatare, die Menschen im Chat, per Sprachnachricht und im Videocall begegnen, auch mehreren Menschen in einem Call.</p></div>
+      <div class="blk on"><div class="k"><svg viewBox="0 0 100 100" style="color:#c4b3ff"><use href="#i-eye"/></svg><span>Wahrnehmung <small>OPM, Observational Perception Models</small></span></div><p>OPM ist unsere eigene Model-Familie für Wahrnehmung. Sie sieht und hört, wie ein Mensch etwas sagt: Gesicht, Stimme, Körper. Sie beschreibt Signale und vergibt keine Etiketten.</p><span class="here">Auf dieser Seite</span></div>
+      <div class="blk"><div class="k"><svg viewBox="0 0 100 100" style="color:#c4b3ff"><use href="#i-head"/></svg><span>Gedächtnis <small>OMM, Observational Memory Models</small></span></div><p>OMM ist unsere eigene Model-Familie für Gedächtnis. Sie hält zusammen, was über Wochen gesagt und beobachtet wurde, jede Zeile mit Datum und Quelle.</p></div>
+      <div class="blk"><div class="k"><svg viewBox="0 0 100 100" style="color:#c4b3ff"><use href="#i-nodes"/></svg><span>Bedeutung <small>Muster</small></span></div><p>Erkennt, was sich wiederholt und was sich verändert, und trennt jede Ablesung in Beobachtung, Deutung und Hypothese.</p></div>
+      <div class="blk"><div class="k"><svg viewBox="0 0 100 100" style="color:#c4b3ff"><use href="#i-avatar"/></svg><span>Präsenz <small>Extended Avatare</small></span></div><p>Unser eigenes Produkt auf dieser Technologie: Extended Avatare, die Menschen im Chat, per Sprachnachricht und im Videocall begegnen, auch mehreren Menschen in einem Call.</p></div>
     </div>
   </div>
   <div class="status">
