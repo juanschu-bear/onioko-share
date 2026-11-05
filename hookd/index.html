@@ -43,6 +43,15 @@ p{margin:0 0 14px}
 .senses .new{border-color:rgba(155,123,255,.5);background:linear-gradient(135deg,rgba(155,123,255,.14),rgba(155,123,255,.03));box-shadow:0 20px 60px rgba(155,123,255,.12)}
 .senses .new .lbl{color:var(--onioko)}
 .roles{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.reelbox{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:40px;align-items:center;margin-top:44px;max-width:1100px}
+.reelvid{display:block;width:100%;aspect-ratio:9/16;border-radius:28px;border:1px solid rgba(155,123,255,.45);background:#0f0e14;box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 80px rgba(155,123,255,.16);object-fit:cover}
+.reeltxt .k{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--onioko);font-weight:800;margin-bottom:12px}
+.reeltxt h3{font-size:clamp(26px,3vw,40px);letter-spacing:-.03em;margin:0 0 12px}
+.reeltxt p{color:#e9e6ef;font-size:17px;max-width:520px;margin:0 0 18px}
+.reeltxt .dl{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid rgba(155,123,255,.55);color:#d9d0ff;font-weight:700;font-size:15px;text-decoration:none;transition:transform .16s ease-out,background .2s}
+.reeltxt .dl:hover{background:rgba(155,123,255,.12)}
+.reeltxt .dl:active{transform:scale(.97)}
+@media (max-width:980px){.reelbox{grid-template-columns:1fr;gap:22px}.reelvid{max-width:320px;margin:0 auto}}
 .scrollhint{margin-top:44px;color:var(--mute);font-size:14px;display:flex;align-items:center;gap:10px}
 .scrollhint i{display:inline-block;width:22px;height:34px;border:2px solid var(--mute);border-radius:12px;position:relative}
 .scrollhint i::after{content:"";position:absolute;left:50%;top:6px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:var(--mute);animation:wheel 1.6s infinite}
@@ -389,6 +398,15 @@ footer{padding-top:30px;padding-bottom:60px;color:var(--mute);font-size:13px;bor
     <span class="chip"><span class="dot h"></span>HOOKD: findet, schreibt, plant, postet</span>
     <span class="chip"><span class="dot o"></span>ONIOKO: eigene Models, OPM und OMM</span>
     <span class="chip"><span class="dot m"></span>Mara: eine erfundene Creatorin</span>
+  </div>
+  <div class="reelbox">
+    <video class="reelvid" src="/hookd/onioko-reel.mp4" poster="/hookd/onioko-reel-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="35 Sekunden: Ein Reel, 3 Lesarten. HOOKD liest Text und Zahlen, ONIOKO liest, wie der Mensch darin wirkt."></video>
+    <div class="reeltxt">
+      <div class="k">Die Idee in 35 Sekunden</div>
+      <h3>Ein Reel, 3 Lesarten.</h3>
+      <p>HOOKD liest, was gesagt wird und wie es gelaufen ist. ONIOKO liest, wie der Mensch darin wirkt: im Original, im eigenen Take und über Wochen.</p>
+      <a class="dl" href="/hookd/onioko-reel-1080.mp4" download="ONIOKO-HOOKD-Reel.mp4">Video herunterladen (MP4)</a>
+    </div>
   </div>
   <div class="scrollhint"><i></i> Scrollen. Die Karte fährt mit.</div>
 </header>
