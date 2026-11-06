@@ -9,6 +9,7 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="alternate" hreflang="es" href="https://share.onioko.com/proxima-generacion">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The money transfers. The judgment doesn't.">
 <meta property="og:description" content="ONIOKO passes a founder's judgment on to the next generation, with his face and his voice.">
@@ -284,6 +285,14 @@
   input::placeholder, textarea::placeholder { color: rgba(255,255,255,.45); }
   input:focus, textarea:focus { outline: none; border-color: var(--gold); background: rgba(255,255,255,.1); }
   textarea { min-height: 96px; resize: vertical; }
+  select { display: block; width: 100%; margin-top: 8px; font: 400 16px/1.4 "Inter", sans-serif; color: #fff; background: rgba(255,255,255,.07) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23ffffff' stroke-opacity='.7' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 14px center; border: 1px solid rgba(255,255,255,.2); border-radius: 12px; padding: 13px 40px 13px 14px; -webkit-appearance: none; appearance: none; transition: border-color .2s ease, background-color .2s ease; }
+  select:focus { outline: none; border-color: var(--gold); }
+  select option { color: #15171a; }
+  form .fit { margin-top: 10px; font-size: 14px; line-height: 1.45; color: var(--gold); }
+  form .fit a { color: inherit; }
+  form .btn:disabled { opacity: .45; cursor: not-allowed; }
+  .qualify { margin-top: clamp(16px, 3vh, 26px); font-size: clamp(14px, 1.1vw, 16px); color: rgba(255,255,255,.72); display: flex; align-items: center; gap: 10px; }
+  .qualify::before { content: ""; width: 18px; height: 1px; background: var(--gold); }
   form .btn { margin-top: 22px; width: 100%; font-size: 16px; padding: 15px 22px; }
   form .direct { margin-top: 14px; font-size: 13.5px; color: rgba(255,255,255,.66); text-align: center; }
   form .direct a { color: rgba(255,255,255,.9); }
@@ -364,6 +373,7 @@
     .stack { grid-template-columns: 1fr; gap: 8px; margin-top: 18px; }
     .stack li { padding: 11px 14px 12px; }
     .stack b { font-size: 15px; } .stack p { margin-top: 3px; font-size: 13.5px; }
+    .qualify { font-size: 13px; margin-top: 12px; }
 
     #L-seal .media video, #L-seal .media img { transform: none; }
     #L-seal .shade { background: linear-gradient(180deg, rgba(10,12,16,.75) 0%, rgba(10,12,16,0) 30%, rgba(10,12,16,0) 58%, rgba(10,12,16,.85) 82%); }
@@ -435,7 +445,7 @@
 
   <!-- 1. The founder -->
   <section class="layer" id="L-hero" data-len="3" data-cta="hide" data-ch="1">
-    <div class="media"><picture><source media="(max-aspect-ratio: 3/4)" srcset="/next-generation/assets/s1p.jpg"><img src="/next-generation/assets/s1.jpg" alt=""></picture><video muted playsinline preload="auto" data-src="/next-generation/assets/s1.mp4" data-res="v_hero" data-src-p="/next-generation/assets/s1p.mp4" data-res-p="v_hero_p"></video></div>
+    <div class="media"><picture><source media="(max-aspect-ratio: 3/4)" srcset="/next-generation/assets/s1p.jpg"><img src="/next-generation/assets/s1.jpg" alt=""></picture><video muted playsinline preload="none" data-src="/next-generation/assets/s1.mp4" data-res="v_hero" data-src-p="/next-generation/assets/s1p.mp4" data-res-p="v_hero_p"></video></div>
     <div class="shade"></div>
     <div class="ui">
     <div class="copy">
@@ -480,7 +490,7 @@
 
   <!-- 3. She asks -->
   <section class="layer" id="L-ask" data-len="3.8" data-ch="2" data-v1="0.94">
-    <div class="media"><picture><source media="(max-aspect-ratio: 3/4)" srcset="/next-generation/assets/askp.jpg"><img src="/next-generation/assets/ask.jpg" alt=""></picture><video muted playsinline preload="auto" data-src="/next-generation/assets/ask.mp4" data-res="v_ask" data-src-p="/next-generation/assets/askp.mp4" data-res-p="v_ask_p"></video></div>
+    <div class="media"><picture><source media="(max-aspect-ratio: 3/4)" srcset="/next-generation/assets/askp.jpg"><img src="/next-generation/assets/ask.jpg" alt=""></picture><video muted playsinline preload="none" data-src="/next-generation/assets/ask.mp4" data-res="v_ask" data-src-p="/next-generation/assets/askp.mp4" data-res-p="v_ask_p"></video></div>
     <div class="shade"></div>
     <div class="ui">
     <div class="head">
@@ -515,13 +525,13 @@
 
   <!-- 3b. Match cut: into the tablet, out of the training-room screen -->
   <section class="layer" id="L-cut" data-len="1.7" data-cta="hide" data-ch="2" data-fade="0.12" data-fade-p="0.3" data-v1="0.97" aria-hidden="true">
-    <div class="media"><video muted playsinline preload="auto" data-src="/next-generation/assets/cut.mp4" data-res="v_cut" data-src-p="/next-generation/assets/cutp.mp4" data-res-p="v_cut_p"></video></div>
+    <div class="media"><video muted playsinline preload="none" data-src="/next-generation/assets/cut.mp4" data-res="v_cut" data-src-p="/next-generation/assets/cutp.mp4" data-res-p="v_cut_p"></video></div>
     <div class="ui"></div>
   </section>
 
   <!-- 4. The team -->
   <section class="layer" id="L-team" data-len="3" data-cta="hide" data-ch="2" data-fade="0.08" data-fade-p="0.3">
-    <div class="media"><picture><source media="(max-aspect-ratio: 3/4)" srcset="/next-generation/assets/s3p.jpg"><img src="/next-generation/assets/s3.jpg" alt=""></picture><video muted playsinline preload="auto" data-src="/next-generation/assets/s3.mp4" data-res="v_team" data-src-p="/next-generation/assets/s3p.mp4" data-res-p="v_team_p"></video></div>
+    <div class="media"><picture><source media="(max-aspect-ratio: 3/4)" srcset="/next-generation/assets/s3p.jpg"><img src="/next-generation/assets/s3.jpg" alt=""></picture><video muted playsinline preload="none" data-src="/next-generation/assets/s3.mp4" data-res="v_team" data-src-p="/next-generation/assets/s3p.mp4" data-res-p="v_team_p"></video></div>
     <div class="shade"></div>
     <div class="ui">
     <div class="glass team" data-at="0.12">
@@ -548,7 +558,7 @@
 
   <!-- 5. Pride -->
   <section class="layer" id="L-pride" data-len="2.6" data-ch="3">
-    <div class="media"><picture><source media="(max-aspect-ratio: 3/4)" srcset="/next-generation/assets/pridep.jpg"><img src="/next-generation/assets/pride.jpg" alt=""></picture><video muted playsinline preload="auto" data-src="/next-generation/assets/pride.mp4" data-res="v_pride" data-src-p="/next-generation/assets/pridep.mp4" data-res-p="v_pride_p"></video></div>
+    <div class="media"><picture><source media="(max-aspect-ratio: 3/4)" srcset="/next-generation/assets/pridep.jpg"><img src="/next-generation/assets/pride.jpg" alt=""></picture><video muted playsinline preload="none" data-src="/next-generation/assets/pride.mp4" data-res="v_pride" data-src-p="/next-generation/assets/pridep.mp4" data-res-p="v_pride_p"></video></div>
     <div class="shade"></div>
     <div class="ui">
     <div class="copy">
@@ -604,13 +614,14 @@
         <li class="glass" data-at="0.33"><b>Your record, owned by your family</b><p>You decide who gets access. Nothing is sold.</p></li>
         <li class="glass" data-at="0.38"><b>A direct line to the founder</b><p>24 families a year. Never a call center.</p></li>
       </ul>
+      <p class="qualify" data-at="0.44">For family businesses with $1.2M or more in annual revenue.</p>
     </div>
   </div>
   </section>
 
   <!-- 9. The seal: four origins become one guarantee -->
   <section class="layer" id="L-seal" data-len="3.4" data-ch="5" data-v0="0.16" data-v1="0.72">
-    <div class="media"><picture><source media="(max-aspect-ratio: 3/4)" srcset="/next-generation/assets/sealp.jpg"><img src="/next-generation/assets/seal.jpg" alt=""></picture><video muted playsinline preload="auto" data-src="/next-generation/assets/seal.mp4" data-res="v_seal" data-src-p="/next-generation/assets/sealp.mp4" data-res-p="v_seal_p"></video></div>
+    <div class="media"><picture><source media="(max-aspect-ratio: 3/4)" srcset="/next-generation/assets/sealp.jpg"><img src="/next-generation/assets/seal.jpg" alt=""></picture><video muted playsinline preload="none" data-src="/next-generation/assets/seal.mp4" data-res="v_seal" data-src-p="/next-generation/assets/sealp.mp4" data-res-p="v_seal_p"></video></div>
     <div class="shade"></div>
     <div class="ui">
     <div class="copy p1" data-range="-1,0.36">
@@ -647,15 +658,27 @@
         <div class="photo"><span aria-hidden="true">JS</span></div>
         <div><b>Juan Schubert</b><a href="mailto:j.schubert@onioko.com">j.schubert@onioko.com</a></div>
       </div>
-      <p class="seats-line">24 families a year. Each one works with him directly.</p>
+      <p class="seats-line">For family businesses from $1.2M in annual revenue. 24 families a year, each one works with him directly.</p>
     </div>
     <form class="glass" id="req-form" action="mailto:j.schubert@onioko.com" method="post" enctype="text/plain">
       <h3>Request a private conversation</h3>
       <p class="note">He reads every request himself.</p>
       <label for="f-name">Your name</label>
       <input id="f-name" name="name" type="text" autocomplete="name" required placeholder="First and last name">
+      <label for="f-email">Your email</label>
+      <input id="f-email" name="email" type="email" autocomplete="email" required placeholder="name@company.com">
       <label for="f-company">Your company</label>
       <input id="f-company" name="company" type="text" autocomplete="organization" required placeholder="Company and industry">
+      <label for="f-rev">Annual revenue of your family business</label>
+      <select id="f-rev" name="revenue" required>
+        <option value="" disabled selected>Please choose</option>
+        <option value="under">Under $1.2M</option>
+        <option>$1.2M to $10M</option>
+        <option>$10M to $50M</option>
+        <option>$50M to $250M</option>
+        <option>Over $250M</option>
+      </select>
+      <p class="fit" hidden>ONIOKO for families starts at $1.2M in annual revenue. For everything else, the technology lives on <a href="https://onioko.com">onioko.com</a>.</p>
       <label for="f-ask">What should the next generation be able to ask you?</label>
       <textarea id="f-ask" name="question" placeholder="Optional. One question is enough."></textarea>
       <button class="btn" type="submit">Send private request</button>
@@ -663,6 +686,7 @@
     </form>
   </div>
   <div class="foot">
+    <a href="/proxima-generacion" lang="es" hreflang="es">Español</a>
     <span>ONIOKO, operated by EXIDEUS LLC</span>
     <a href="https://onioko.com">The technology behind it</a>
   </div>
@@ -680,10 +704,14 @@
     e.preventDefault();
     if (!form.reportValidity()) return;
     var f = form.elements;
-    var n = f['name'].value.trim(), c = f['company'].value.trim(), q = f['question'].value.trim();
-    var body = 'Name: ' + n + '\nCompany: ' + c + (q ? '\n\nWhat the next generation should be able to ask me:\n' + q : '') + '\n';
+    var n = f['name'].value.trim(), em = f['email'].value.trim(), c = f['company'].value.trim(), rv = f['revenue'].value, q = f['question'].value.trim();
+    if (rv === 'under') return;
+    var body = 'Name: ' + n + '\nEmail: ' + em + '\nCompany: ' + c + '\nAnnual revenue: ' + rv + (q ? '\n\nWhat the next generation should be able to ask me:\n' + q : '') + '\n';
     location.href = 'mailto:j.schubert@onioko.com?subject=' + encodeURIComponent('Private request: ' + c) + '&body=' + encodeURIComponent(body);
   });
+
+  var rev = form.elements['revenue'], fit = form.querySelector('.fit'), sendBtn = form.querySelector('button[type="submit"]');
+  rev.addEventListener('change', function () { var no = rev.value === 'under'; fit.hidden = !no; sendBtn.disabled = no; });
 
   if (reduce) { root.classList.add('static'); return; }
   root.classList.add('js');
@@ -717,11 +745,10 @@
   var request = document.getElementById('request');
   var layers = Array.prototype.map.call(document.querySelectorAll('.layer'), function (el) {
     var v = el.querySelector('video');
-    if (v && v.dataset.src) { v.src = srcFor(v); v._p = isPortrait(); }
     var sp = document.createElement('div');
     track.appendChild(sp);
     return {
-      el: el, video: v, spacer: sp, len: parseFloat(el.dataset.len || '3'), t: 0,
+      el: el, video: v, spacer: sp, len: parseFloat(el.dataset.len || '3'), t: 0, tmin: 0, loaded: false,
       fade: el.dataset.fade !== undefined ? parseFloat(el.dataset.fade) : null,
       fadeP: el.dataset.fadeP !== undefined ? parseFloat(el.dataset.fadeP) : null,
       v0: parseFloat(el.dataset.v0 || '0'), v1: parseFloat(el.dataset.v1 || '1'),
@@ -739,7 +766,7 @@
 
   // a rotated phone gets the matching film
   if (portraitMQ && portraitMQ.addEventListener) portraitMQ.addEventListener('change', function () {
-    layers.forEach(function (L) { if (L.video && L.video._p !== isPortrait()) { L.video.src = srcFor(L.video); L.video._p = isPortrait(); } });
+    layers.forEach(function (L) { if (L.video && L.loaded && L.video._p !== isPortrait()) { L.video.src = srcFor(L.video); L.video._p = isPortrait(); } });
   });
 
   // one extra screen at the end, so the last scene rests before the request slides over it
@@ -770,11 +797,29 @@
 
   // iOS lets a video seek only after it has played once
   var primed = false;
+  function primeOne(L) {
+    var p = L.video.play(); if (p && p.then) p.then(function () { if (!L.listening && !L.intro) L.video.pause(); }).catch(function () {});
+  }
   function prime() {
     if (primed) return; primed = true;
-    layers.forEach(function (L) {
-      if (!L.video) return;
-      var p = L.video.play(); if (p && p.then) p.then(function () { if (!L.listening) L.video.pause(); }).catch(function () {});
+    layers.forEach(function (L) { if (L.video && L.loaded) primeOne(L); });
+  }
+  // a film loads only when its scene is 2 scenes away, so phones fetch what they are about to show
+  function loadVideo(L) {
+    if (!L.video || L.loaded || !L.video.dataset.src) return;
+    L.loaded = true; L.video.preload = 'auto'; L.video.src = srcFor(L.video); L.video._p = isPortrait();
+    if (primed) primeOne(L);
+  }
+
+  // the opening shot moves on its own for a moment, then scrolling takes over
+  var INTRO = 1.6;
+  var hero = layers[0];
+  if (hero && hero.video) {
+    hero.video.addEventListener('loadeddata', function onReady() {
+      hero.video.removeEventListener('loadeddata', onReady);
+      if (window.scrollY > 4) return;
+      hero.intro = true;
+      var p = hero.video.play(); if (p && p.catch) p.catch(function () { hero.intro = false; });
     });
   }
   ['touchstart', 'wheel', 'keydown', 'pointerdown'].forEach(function (ev) { window.addEventListener(ev, prime, { passive: true, once: true }); });
@@ -820,6 +865,7 @@
     if (lenis) lenis.raf(time);
     var vh = window.innerHeight, y = window.scrollY, portrait = isPortrait();
     var n = layers.length, i, L;
+    for (i = 0; i < n; i++) { L = layers[i]; if (!L.loaded && L.video && y >= layers[Math.max(0, i - 2)].spacer.offsetTop - vh) loadVideo(L); }
     // pass 1: progress and fades (a fade of 0 is a hard cut on matching frames)
     for (i = 0; i < n; i++) {
       L = layers[i];
@@ -867,9 +913,12 @@
       if (L.zoom) L.zoom.style.transform = 'scale(' + (1 + parseFloat(L.zoom.dataset.zoom) * L.p).toFixed(4) + ')';
 
       var v = L.video;
-      if (v && !L.listening && v.duration && isFinite(v.duration)) {
+      if (L.intro && v) {
+        if (v.currentTime >= INTRO || y > 4 || v.ended) { L.intro = false; v.pause(); L.tmin = Math.min(v.currentTime, INTRO); L.t = v.currentTime; }
+      }
+      if (v && L.loaded && !L.listening && !L.intro && v.duration && isFinite(v.duration)) {
         var q = Math.min(1, Math.max(0, (L.p - L.v0) / (L.v1 - L.v0)));
-        var target = q * (v.duration - 0.06);
+        var target = L.tmin + q * (v.duration - 0.06 - L.tmin);
         L.t += (target - L.t) * VLERP;
         if (Math.abs(L.t - target) < 0.002) L.t = target;
         if (!v.seeking && Math.abs(v.currentTime - L.t) > 0.016) { try { v.currentTime = L.t; } catch (e) {} }
