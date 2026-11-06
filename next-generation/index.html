@@ -673,10 +673,10 @@
       <select id="f-rev" name="revenue" required>
         <option value="" disabled selected>Please choose</option>
         <option value="under">Under $1.2M</option>
-        <option>$1.2M to $10M</option>
-        <option>$10M to $50M</option>
-        <option>$50M to $250M</option>
-        <option>Over $250M</option>
+        <option value="1.2m-10m">$1.2M to $10M</option>
+        <option value="10m-50m">$10M to $50M</option>
+        <option value="50m-250m">$50M to $250M</option>
+        <option value="250m+">Over $250M</option>
       </select>
       <p class="fit" hidden>ONIOKO for families starts at $1.2M in annual revenue. For everything else, the technology lives on <a href="https://onioko.com">onioko.com</a>.</p>
       <label for="f-ask">What should the next generation be able to ask you?</label>
@@ -700,12 +700,26 @@
 
   // private request: open a prepared email to the founder
   var form = document.getElementById('req-form');
-  form.addEventListener('submit', function (e) {
+  var sendLabel = form.querySelector('button[type="submit"]');
+  // with the request desk online, the form posts straight to it (works without script too)
+  if (form.dataset.inbound) {
+    form.addEventListener('submit', function (e) {
+      if (form.elements['revenue'].value === 'under' || !form.checkValidity()) { e.preventDefault(); form.reportValidity(); return; }
+      sendLabel.disabled = true; sendLabel.textContent = sendLabel.dataset.sending || sendLabel.textContent;
+    });
+    var problem = (location.search.match(/[?&]request=([a-z_]+)/) || [])[1];
+    var msgs = form.querySelector('.form-msgs');
+    if (problem && msgs) {
+      var m = msgs.querySelector('[data-k="' + problem + '"]') || msgs.querySelector('[data-k="failed"]');
+      if (m) { m.hidden = false; msgs.hidden = false; }
+    }
+  } else form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (!form.reportValidity()) return;
     var f = form.elements;
     var n = f['name'].value.trim(), em = f['email'].value.trim(), c = f['company'].value.trim(), rv = f['revenue'].value, q = f['question'].value.trim();
     if (rv === 'under') return;
+    rv = f['revenue'].options[f['revenue'].selectedIndex].text;
     var body = 'Name: ' + n + '\nEmail: ' + em + '\nCompany: ' + c + '\nAnnual revenue: ' + rv + (q ? '\n\nWhat the next generation should be able to ask me:\n' + q : '') + '\n';
     location.href = 'mailto:j.schubert@onioko.com?subject=' + encodeURIComponent('Private request: ' + c) + '&body=' + encodeURIComponent(body);
   });

@@ -673,10 +673,10 @@
       <select id="f-rev" name="revenue" required>
         <option value="" disabled selected>Elija una opción</option>
         <option value="under">Menos de US$1,2 millones</option>
-        <option>US$1,2 a 10 millones</option>
-        <option>US$10 a 50 millones</option>
-        <option>US$50 a 250 millones</option>
-        <option>Más de US$250 millones</option>
+        <option value="1.2m-10m">US$1,2 a 10 millones</option>
+        <option value="10m-50m">US$10 a 50 millones</option>
+        <option value="50m-250m">US$50 a 250 millones</option>
+        <option value="250m+">Más de US$250 millones</option>
       </select>
       <p class="fit" hidden>ONIOKO para familias comienza desde US$1,2 millones en ventas anuales. Para todo lo demás, la tecnología está en <a href="https://onioko.com">onioko.com</a>.</p>
       <label for="f-ask">¿Qué debería poder preguntarle la próxima generación?</label>
@@ -700,12 +700,26 @@
 
   // private request: open a prepared email to the founder
   var form = document.getElementById('req-form');
-  form.addEventListener('submit', function (e) {
+  var sendLabel = form.querySelector('button[type="submit"]');
+  // with the request desk online, the form posts straight to it (works without script too)
+  if (form.dataset.inbound) {
+    form.addEventListener('submit', function (e) {
+      if (form.elements['revenue'].value === 'under' || !form.checkValidity()) { e.preventDefault(); form.reportValidity(); return; }
+      sendLabel.disabled = true; sendLabel.textContent = sendLabel.dataset.sending || sendLabel.textContent;
+    });
+    var problem = (location.search.match(/[?&]request=([a-z_]+)/) || [])[1];
+    var msgs = form.querySelector('.form-msgs');
+    if (problem && msgs) {
+      var m = msgs.querySelector('[data-k="' + problem + '"]') || msgs.querySelector('[data-k="failed"]');
+      if (m) { m.hidden = false; msgs.hidden = false; }
+    }
+  } else form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (!form.reportValidity()) return;
     var f = form.elements;
     var n = f['name'].value.trim(), em = f['email'].value.trim(), c = f['company'].value.trim(), rv = f['revenue'].value, q = f['question'].value.trim();
     if (rv === 'under') return;
+    rv = f['revenue'].options[f['revenue'].selectedIndex].text;
     var body = 'Nombre: ' + n + '\nCorreo: ' + em + '\nEmpresa: ' + c + '\nVentas anuales: ' + rv + (q ? '\n\nLo que la próxima generación debería poder preguntarme:\n' + q : '') + '\n';
     location.href = 'mailto:j.schubert@onioko.com?subject=' + encodeURIComponent('Solicitud privada: ' + c) + '&body=' + encodeURIComponent(body);
   });
