@@ -290,6 +290,7 @@
   select option { color: #15171a; }
   form .fit { margin-top: 10px; font-size: 14px; line-height: 1.45; color: var(--gold); }
   form .fit a { color: inherit; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
   form .btn:disabled { opacity: .45; cursor: not-allowed; }
   .qualify { margin-top: clamp(16px, 3vh, 26px); font-size: clamp(14px, 1.1vw, 16px); color: rgba(255,255,255,.72); display: flex; align-items: center; gap: 10px; }
   .qualify::before { content: ""; width: 18px; height: 1px; background: var(--gold); }
@@ -660,9 +661,12 @@
       </div>
       <p class="seats-line">Para empresas familiares con ventas anuales desde US$1,2 millones. 24 familias al año, cada una trabaja directamente con él.</p>
     </div>
-    <form class="glass" id="req-form" action="mailto:j.schubert@onioko.com" method="post" enctype="text/plain">
+    <form class="glass" id="req-form" action="https://cal.onioko.com/api/inbound/request" method="post" data-inbound="1">
       <h3>Solicitar una conversación privada</h3>
-      <p class="note">Él lee personalmente cada solicitud.</p>
+      <p class="note">Él lee personalmente cada solicitud. Justo después de enviarla, puede hablar con Clara, un Extended Avatar de su equipo.</p>
+      <div class="form-msgs" role="alert" hidden><p class="fit" data-k="invalid_email" hidden>Revise su correo electrónico, por favor.</p><p class="fit" data-k="missing_fields" hidden>Complete nombre, correo, empresa y ventas, por favor.</p><p class="fit" data-k="below_threshold" hidden>ONIOKO para familias comienza desde US$1,2 millones en ventas anuales.</p><p class="fit" data-k="rate_limited" hidden>Demasiadas solicitudes en poco tiempo. Inténtelo de nuevo en unos minutos.</p><p class="fit" data-k="failed" hidden>No se pudo enviar su solicitud. Inténtelo de nuevo o escriba directamente a j.schubert@onioko.com.</p></div>
+      <input type="hidden" name="source" value="proxima-generacion">
+      <div class="hp" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></div>
       <label for="f-name">Su nombre</label>
       <input id="f-name" name="name" type="text" autocomplete="name" required placeholder="Nombre y apellido">
       <label for="f-email">Su correo electrónico</label>
@@ -681,7 +685,7 @@
       <p class="fit" hidden>ONIOKO para familias comienza desde US$1,2 millones en ventas anuales. Para todo lo demás, la tecnología está en <a href="https://onioko.com">onioko.com</a>.</p>
       <label for="f-ask">¿Qué debería poder preguntarle la próxima generación?</label>
       <textarea id="f-ask" name="question" placeholder="Opcional. Con una pregunta basta."></textarea>
-      <button class="btn" type="submit">Enviar solicitud privada</button>
+      <button class="btn" type="submit" data-sending="Enviando…">Enviar solicitud privada</button>
       <p class="direct">O escriba directamente: <a href="mailto:j.schubert@onioko.com">j.schubert@onioko.com</a></p>
     </form>
   </div>
