@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>ONIOKO for ToolboxVR</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="A brief overview for ToolboxVR: what ONIOKO's perception and memory technology could do inside your worlds, what it reads on each device, and how it's built for training in Germany.">
+<meta property="og:title" content="ONIOKO for ToolboxVR">
+<meta property="og:description" content="Perception and memory for your characters. Observable signals, never emotion labels.">
+<style>
+:root{--bg0:#0b0b10;--bg1:#15131d;--ink:#f4f2ee;--mute:#aaa6b2;--line:rgba(255,255,255,.09);
+--v:#9b7bff;--v2:#c9bbff;--teal:#5fe0c0;--amber:#f2b84e;--card:#14121a;--ease:cubic-bezier(.23,1,.32,1)}
+*{box-sizing:border-box}
+html{background:var(--bg0);scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(1100px 760px at 78% -8%,#2a2342 0%,var(--bg1) 38%,var(--bg0) 76%) no-repeat,var(--bg0);color:var(--ink);font-family:ui-sans-serif,-apple-system,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip}
+h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.025em;line-height:1.06;text-wrap:balance}
+p{margin:0 0 14px;text-wrap:pretty}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+section{position:relative;padding:104px 0}
+section::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none}
+.num{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:800;color:var(--mute);margin-bottom:18px}
+.num b{color:var(--v2);font-weight:800}
+.num i{flex:1;height:1px;background:var(--line);max-width:120px}
+h2{font-size:clamp(32px,4.2vw,56px);letter-spacing:-.035em}
+.lead{font-size:clamp(18px,1.6vw,21px);color:#dcd8e2;max-width:760px;margin-top:20px}
+.badge{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#cfc9d8;border:1px solid var(--line);border-radius:999px;padding:3px 9px;background:rgba(0,0,0,.25)}
+
+/* hero */
+.hero{min-height:92vh;display:grid;align-content:center;padding:80px 0 64px}
+.hero::before{background:radial-gradient(640px 480px at 80% 46%,rgba(155,123,255,.18),transparent 70%),radial-gradient(520px 380px at 12% 96%,rgba(95,224,192,.07),transparent 70%)}
+.hgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:52px;align-items:center}
+.kick{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:26px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--mute)}
+.kick .to{color:#111;background:var(--teal);padding:6px 12px;border-radius:999px}
+.hero h1{font-size:clamp(42px,5.6vw,84px);letter-spacing:-.05em;line-height:.98;font-weight:850}
+.hero h1 span{display:block}
+.hero h1 .t2{font-size:.5em;line-height:1.12;letter-spacing:-.03em;margin-top:.4em;background:linear-gradient(100deg,#c9bbff 0%,#9b7bff 30%,#f3efff 48%,#9b7bff 64%,#5fe0c0 100%);background-size:240% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 8s ease-in-out infinite;padding-bottom:.06em}
+@keyframes sheen{0%,100%{background-position:100% 0}50%{background-position:0 0}}
+.hero .lead{margin-top:26px}
+
+.panel{position:relative;border-radius:26px;padding:20px 20px 18px;background:linear-gradient(180deg,#1c1a24,#121017);border:1px solid #33303d;box-shadow:0 50px 100px rgba(0,0,0,.55),0 0 0 1px rgba(155,123,255,.08);transform:perspective(1500px) rotateY(-9deg) rotateX(5deg);transition:transform .7s var(--ease)}
+.panel:hover{transform:perspective(1500px) rotateY(0) rotateX(0)}
+.panel .glow{position:absolute;inset:-14%;z-index:-1;border-radius:50%;background:radial-gradient(closest-side,rgba(155,123,255,.28),transparent);pointer-events:none}
+.ptop{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid #2b2833}
+.ptop b{font-size:13.5px;letter-spacing:.01em}
+.ptop small{display:block;color:var(--mute);font-size:12px;margin-top:2px}
+.ch{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 10px}
+.ch span{font-size:12px;font-weight:750;padding:5px 10px;border-radius:999px;border:1px solid #3a3645;color:#d9d4e2;display:inline-flex;gap:7px;align-items:center}
+.ch span i{width:8px;height:8px;border-radius:50%;background:var(--amber)}
+.ch span.on{border-color:rgba(242,184,78,.6);background:rgba(242,184,78,.10)}
+.wavebox{position:relative;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid #2b2833;padding:26px 12px 10px}
+.wave{display:block;width:100%;height:84px}
+.wave .sp{fill:var(--amber)}
+.wave .ps{fill:#4a4654}
+.wave .hl{fill:rgba(155,123,255,.16);stroke:rgba(155,123,255,.55);stroke-width:1;stroke-dasharray:3 3}
+.wave .mk{stroke:#fff;stroke-width:1.5;stroke-dasharray:4 3;vector-effect:non-scaling-stroke}
+.wlabel{position:absolute;top:6px;font-size:10.5px;font-weight:800;letter-spacing:.08em;color:#fff;background:#2a2633;border:1px solid #4a4555;border-radius:999px;padding:1px 8px;transform:translateX(-50%);white-space:nowrap}
+.wleft{position:absolute;top:7px;left:12px;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--mute)}
+.wsweep{position:absolute;top:22px;bottom:8px;width:2px;background:#fff;box-shadow:0 0 10px rgba(255,255,255,.8);left:12px;animation:sweep 6s linear infinite;border-radius:2px}
+@keyframes sweep{0%{left:12px;opacity:0}5%{opacity:1}85%{left:calc(100% - 14px);opacity:1}92%,100%{left:calc(100% - 14px);opacity:0}}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.tags span{font-size:12px;font-weight:750;padding:4px 10px;border-radius:999px;background:rgba(155,123,255,.16);border:1px solid rgba(155,123,255,.45);color:#e8e1ff}
+.obs{border-radius:16px;padding:14px 16px;background:linear-gradient(160deg,rgba(155,123,255,.20),rgba(155,123,255,.05));border:1px solid rgba(155,123,255,.45);font-size:15px;line-height:1.45}
+.obs b{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--v2);margin-bottom:5px}
+.mem{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px}
+.mem div{border-radius:12px;padding:9px 10px;border:1px solid #2b2833;background:rgba(95,224,192,.04);font-size:12px;color:#cfe9e2}
+.mem div b{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:2px}
+.mem div.now{border-color:rgba(95,224,192,.55);background:rgba(95,224,192,.10)}
+.memnote{font-size:12px;color:var(--mute);margin-top:8px}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:44px}
+.card{border-radius:22px;padding:24px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.012))}
+.card .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;margin-bottom:18px;background:rgba(155,123,255,.14);border:1px solid rgba(155,123,255,.38)}
+.card .ic svg,.dev .ic svg{width:22px;height:22px;fill:none;stroke:#e6deff;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:21px;margin-bottom:10px}
+.card p{color:#d3cfd9;font-size:15.5px;margin:0}
+.aside{margin-top:20px;font-size:14px;color:var(--mute)}
+.ex::before{background:radial-gradient(800px 500px at 15% 40%,rgba(95,224,192,.06),transparent 70%)}
+
+/* devices */
+.dev-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;margin-top:44px}
+.dev{border-radius:24px;padding:26px;border:1px solid var(--line);background:var(--card);position:relative;overflow:hidden}
+.dev .ic{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;margin-bottom:18px;background:rgba(242,184,78,.10);border:1px solid rgba(242,184,78,.45)}
+.dev .ic svg{stroke:var(--amber)}
+.dev h3{font-size:23px;margin-bottom:10px}
+.dev p{color:#d3cfd9;margin:0 0 16px}
+.chan{display:flex;gap:8px;flex-wrap:wrap}
+.chan span{font-size:12.5px;font-weight:750;padding:6px 12px;border-radius:999px;border:1px solid #3a3645;color:#8f8a99}
+.chan span.on{color:#1a1405;background:var(--amber);border-color:var(--amber)}
+.chan span.off{text-decoration:line-through;text-decoration-color:rgba(255,255,255,.35)}
+.keep{margin-top:18px;border-radius:20px;padding:20px 22px;border:1px dashed rgba(242,184,78,.45);background:rgba(242,184,78,.05);font-size:17px;font-weight:650}
+.maplink{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:14px;padding:18px 22px;border-radius:20px;border:1px solid var(--line);background:rgba(255,255,255,.03);text-decoration:none;transition:border-color .2s ease,background .2s ease}
+.maplink:hover{border-color:rgba(155,123,255,.6);background:rgba(155,123,255,.08)}
+.maplink b{display:block;font-size:16px}
+.maplink small{display:block;color:var(--mute);font-size:13.5px;margin-top:2px}
+.maplink .ar{font-size:22px;color:var(--v2)}
+.devs::before{background:radial-gradient(800px 500px at 85% 30%,rgba(242,184,78,.06),transparent 70%)}
+
+/* compliance */
+.law::before{background:radial-gradient(900px 560px at 50% 30%,rgba(155,123,255,.11),transparent 70%)}
+.quote{margin-top:30px;border-left:3px solid var(--v);padding:6px 0 6px 18px;font-size:15px;color:#cfcbd6;max-width:760px}
+.quote b{color:#fff}
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:40px;position:relative}
+.flow > div{position:relative;border-radius:20px;padding:20px;border:1px solid var(--line);background:var(--card)}
+.flow > div:last-child{border-color:rgba(95,224,192,.55);background:linear-gradient(170deg,rgba(95,224,192,.12),rgba(95,224,192,.02) 60%),var(--card)}
+.flow .n{font-size:40px;font-weight:850;letter-spacing:-.04em;line-height:1;color:rgba(255,255,255,.14);margin-bottom:10px}
+.flow > div:last-child .n{color:var(--teal)}
+.flow h3{font-size:18px;margin-bottom:6px}
+.flow p{font-size:14.5px;color:#cfcbd6;margin:0}
+.flow > div:not(:last-child)::after{content:"";position:absolute;right:-10px;top:50%;width:8px;height:8px;border-top:2px solid var(--v);border-right:2px solid var(--v);transform:translateY(-50%) rotate(45deg);z-index:2}
+.rules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:22px}
+.rules div{display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;align-items:start;border-radius:16px;padding:14px 16px;border:1px solid var(--line);background:rgba(255,255,255,.025);font-size:15px;line-height:1.4}
+.rules div i{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:rgba(155,123,255,.18);color:#e6deff;font-style:normal;font-weight:850;font-size:13px}
+.fine{margin-top:18px;font-size:13.5px;color:var(--mute);max-width:820px}
+
+/* data */
+.data::before{background:radial-gradient(800px 500px at 20% 60%,rgba(95,224,192,.06),transparent 70%)}
+.dgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:44px}
+.dgrid > div{border-radius:22px;padding:24px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01))}
+.dgrid h3{font-size:19px;margin-bottom:8px}
+.dgrid p{margin:0;color:#d3cfd9;font-size:15.5px}
+.dgrid a{color:var(--v2)}
+
+/* cta */
+.cta::before{background:radial-gradient(900px 600px at 50% 50%,rgba(155,123,255,.15),transparent 70%)}
+.ctabox{border-radius:30px;padding:clamp(28px,4.5vw,60px);border:1px solid rgba(155,123,255,.42);background:linear-gradient(160deg,rgba(155,123,255,.20),rgba(20,18,26,.9) 55%),#13111a;box-shadow:0 60px 120px rgba(0,0,0,.45)}
+.ctabox p{font-size:clamp(18px,1.6vw,21px);max-width:640px;color:#e6e2ec;margin-top:18px}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:13px 24px;border-radius:999px;background:var(--teal);color:#08110e;font-weight:850;text-decoration:none;margin-top:18px;transition:transform 160ms var(--ease)}
+.btn:active{transform:scale(.97)}
+.sig{margin-top:22px;font-size:14px;color:var(--mute)}
+.sig b{color:var(--ink)}
+footer{padding:46px 0 64px;color:var(--mute);font-size:13px}
+
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+
+@media (max-width:1000px){
+  section{padding:80px 0}
+  .hero{min-height:0;padding-top:56px}
+  .hgrid{grid-template-columns:1fr;gap:34px}
+  .panel{transform:none}
+  .cards,.flow,.rules{grid-template-columns:1fr 1fr}
+  .flow > div:not(:last-child)::after{display:none}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .wrap{padding:0 16px}
+  .cards,.dev-grid,.flow,.rules,.dgrid{grid-template-columns:1fr}
+  .hero h1{font-size:clamp(40px,12vw,56px)}
+  .panel{padding:16px 14px}
+  .mem{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  .mem div{padding:8px;font-size:11px}
+  .panel .glow{inset:0}
+  .wl-x{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero h1 .t2,.wsweep{animation:none}.wsweep{display:none}
+  .js .rv{opacity:1;transform:none;transition:none}
+}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<main>
+
+<header class="hero">
+ <div class="wrap hgrid">
+  <div>
+    <div class="kick"><span class="to">For Tobias Ladewig</span><span>ToolboxVR · Brief overview</span></div>
+    <h1><span class="t1">Every AI can answer you.</span><span class="t2">Ours perceives you, remembers you, and builds on every conversation.</span></h1>
+    <p class="lead">ONIOKO builds perception and memory technology for human-facing AI. This page shows what it could do inside ToolboxVR, what it reads on each device, and where it stands on the EU AI Act: Observable signals, never emotion labels.</p>
+  </div>
+  <div class="panel" aria-label="Example: a practice conversation in session 3, voice signals and a plain-language observation">
+    <div class="glow"></div>
+    <div class="ptop"><div><b>Practice conversation · Customer character</b><small>Retail training · Session 3 of a trainee</small></div><span class="badge">Example</span></div>
+    <div class="ch"><span class="on"><i></i>Voice</span><span><i style="background:#5d5967"></i>Face</span><span><i style="background:#5d5967"></i>Posture</span></div>
+    <div class="wavebox">
+      <span class="wleft">Voice<span class="wl-x"> · pace and pauses</span></span>
+      <span class="wlabel" style="left:calc(12px + (100% - 24px) * 0.638)">Price question</span>
+      <svg class="wave" viewBox="0 0 600 80" preserveAspectRatio="none" aria-hidden="true"><rect class="hl" x="383.0" y="6" width="38.3" height="68" rx="6"/><rect class="hl" x="463.8" y="6" width="34.0" height="68" rx="6"/><rect class="hl" x="531.9" y="6" width="42.6" height="68" rx="6"/><rect class="sp" x="0.8" y="27.2" width="2.7" height="25.5" rx="1.4"/><rect class="sp" x="5.0" y="31.4" width="2.7" height="17.1" rx="1.4"/><rect class="sp" x="9.3" y="19.9" width="2.7" height="40.1" rx="1.4"/><rect class="sp" x="13.5" y="33.4" width="2.7" height="13.3" rx="1.4"/><rect class="sp" x="17.8" y="23.1" width="2.7" height="33.9" rx="1.4"/><rect class="sp" x="22.0" y="27.0" width="2.7" height="26.0" rx="1.4"/><rect class="sp" x="26.3" y="33.8" width="2.7" height="12.5" rx="1.4"/><rect class="sp" x="30.6" y="24.4" width="2.7" height="31.3" rx="1.4"/><rect class="sp" x="34.8" y="34.2" width="2.7" height="11.5" rx="1.4"/><rect class="sp" x="39.1" y="26.3" width="2.7" height="27.4" rx="1.4"/><rect class="sp" x="43.3" y="33.6" width="2.7" height="12.7" rx="1.4"/><rect class="sp" x="47.6" y="33.3" width="2.7" height="13.5" rx="1.4"/><rect class="sp" x="51.8" y="27.0" width="2.7" height="26.0" rx="1.4"/><rect class="sp" x="56.1" y="19.8" width="2.7" height="40.4" rx="1.4"/><rect class="sp" x="60.3" y="32.8" width="2.7" height="14.4" rx="1.4"/><rect class="sp" x="64.6" y="31.1" width="2.7" height="17.8" rx="1.4"/><rect class="sp" x="68.9" y="24.3" width="2.7" height="31.4" rx="1.4"/><rect class="sp" x="73.1" y="19.2" width="2.7" height="41.6" rx="1.4"/><rect class="sp" x="77.4" y="25.6" width="2.7" height="28.7" rx="1.4"/><rect class="sp" x="81.6" y="28.7" width="2.7" height="22.5" rx="1.4"/><rect class="sp" x="85.9" y="20.0" width="2.7" height="40.0" rx="1.4"/><rect class="sp" x="90.1" y="34.3" width="2.7" height="11.4" rx="1.4"/><rect class="sp" x="94.4" y="22.6" width="2.7" height="34.9" rx="1.4"/><rect class="sp" x="98.6" y="30.9" width="2.7" height="18.1" rx="1.4"/><rect class="sp" x="102.9" y="33.0" width="2.7" height="13.9" rx="1.4"/><rect class="sp" x="107.1" y="33.4" width="2.7" height="13.1" rx="1.4"/><rect class="ps" x="111.4" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps" x="115.7" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps" x="119.9" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="sp" x="124.2" y="27.6" width="2.7" height="24.8" rx="1.4"/><rect class="sp" x="128.4" y="15.8" width="2.7" height="48.3" rx="1.4"/><rect class="sp" x="132.7" y="30.8" width="2.7" height="18.3" rx="1.4"/><rect class="sp" x="136.9" y="21.9" width="2.7" height="36.1" rx="1.4"/><rect class="sp" x="141.2" y="21.0" width="2.7" height="38.0" rx="1.4"/><rect class="sp" x="145.4" y="27.0" width="2.7" height="26.0" rx="1.4"/><rect class="sp" x="149.7" y="23.5" width="2.7" height="32.9" rx="1.4"/><rect class="sp" x="154.0" y="33.7" width="2.7" height="12.6" rx="1.4"/><rect class="sp" x="158.2" y="33.8" width="2.7" height="12.4" rx="1.4"/><rect class="sp" x="162.5" y="31.0" width="2.7" height="18.0" rx="1.4"/><rect class="sp" x="166.7" y="22.2" width="2.7" height="35.7" rx="1.4"/><rect class="sp" x="171.0" y="27.2" width="2.7" height="25.7" rx="1.4"/><rect class="sp" x="175.2" y="29.4" width="2.7" height="21.2" rx="1.4"/><rect class="sp" x="179.5" y="24.9" width="2.7" height="30.3" rx="1.4"/><rect class="sp" x="183.7" y="27.4" width="2.7" height="25.2" rx="1.4"/><rect class="sp" x="188.0" y="30.1" width="2.7" height="19.8" rx="1.4"/><rect class="sp" x="192.3" y="22.5" width="2.7" height="35.1" rx="1.4"/><rect class="sp" x="196.5" y="24.3" width="2.7" height="31.3" rx="1.4"/><rect class="sp" x="200.8" y="31.4" width="2.7" height="17.2" rx="1.4"/><rect class="sp" x="205.0" y="26.8" width="2.7" height="26.3" rx="1.4"/><rect class="sp" x="209.3" y="27.8" width="2.7" height="24.4" rx="1.4"/><rect class="sp" x="213.5" y="23.4" width="2.7" height="33.1" rx="1.4"/><rect class="ps" x="217.8" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps" x="222.0" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps" x="226.3" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="sp" x="230.6" y="17.5" width="2.7" height="45.0" rx="1.4"/><rect class="sp" x="234.8" y="28.3" width="2.7" height="23.5" rx="1.4"/><rect class="sp" x="239.1" y="12.7" width="2.7" height="54.6" rx="1.4"/><rect class="sp" x="243.3" y="32.4" width="2.7" height="15.2" rx="1.4"/><rect class="sp" x="247.6" y="26.0" width="2.7" height="27.9" rx="1.4"/><rect class="sp" x="251.8" y="19.2" width="2.7" height="41.5" rx="1.4"/><rect class="sp" x="256.1" y="31.9" width="2.7" height="16.1" rx="1.4"/><rect class="sp" x="260.3" y="25.4" width="2.7" height="29.1" rx="1.4"/><rect class="sp" x="264.6" y="34.3" width="2.7" height="11.5" rx="1.4"/><rect class="sp" x="268.9" y="22.8" width="2.7" height="34.4" rx="1.4"/><rect class="sp" x="273.1" y="21.5" width="2.7" height="37.0" rx="1.4"/><rect class="sp" x="277.4" y="25.3" width="2.7" height="29.5" rx="1.4"/><rect class="sp" x="281.6" y="20.7" width="2.7" height="38.7" rx="1.4"/><rect class="sp" x="285.9" y="30.1" width="2.7" height="19.9" rx="1.4"/><rect class="sp" x="290.1" y="24.5" width="2.7" height="31.0" rx="1.4"/><rect class="sp" x="294.4" y="26.4" width="2.7" height="27.2" rx="1.4"/><rect class="sp" x="298.6" y="27.0" width="2.7" height="26.0" rx="1.4"/><rect class="sp" x="302.9" y="29.0" width="2.7" height="22.0" rx="1.4"/><rect class="ps" x="307.1" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps" x="311.4" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="sp" x="315.7" y="14.8" width="2.7" height="50.3" rx="1.4"/><rect class="sp" x="319.9" y="13.0" width="2.7" height="54.0" rx="1.4"/><rect class="sp" x="324.2" y="24.3" width="2.7" height="31.4" rx="1.4"/><rect class="sp" x="328.4" y="20.5" width="2.7" height="39.0" rx="1.4"/><rect class="sp" x="332.7" y="33.7" width="2.7" height="12.6" rx="1.4"/><rect class="sp" x="336.9" y="20.7" width="2.7" height="38.6" rx="1.4"/><rect class="sp" x="341.2" y="22.3" width="2.7" height="35.5" rx="1.4"/><rect class="sp" x="345.4" y="16.2" width="2.7" height="47.7" rx="1.4"/><rect class="sp" x="349.7" y="20.0" width="2.7" height="40.0" rx="1.4"/><rect class="sp" x="354.0" y="30.0" width="2.7" height="20.0" rx="1.4"/><rect class="sp" x="358.2" y="28.5" width="2.7" height="23.0" rx="1.4"/><rect class="sp" x="362.5" y="24.2" width="2.7" height="31.5" rx="1.4"/><rect class="sp" x="366.7" y="34.7" width="2.7" height="10.7" rx="1.4"/><rect class="sp" x="371.0" y="28.2" width="2.7" height="23.5" rx="1.4"/><rect class="sp" x="375.2" y="32.7" width="2.7" height="14.7" rx="1.4"/><rect class="sp" x="379.5" y="33.5" width="2.7" height="13.1" rx="1.4"/><rect class="ps long" x="383.7" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps long" x="388.0" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps long" x="392.3" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps long" x="396.5" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps long" x="400.8" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps long" x="405.0" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps long" x="409.3" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps long" x="413.5" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps long" x="417.8" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="sp" x="422.0" y="33.6" width="2.7" height="12.8" rx="1.4"/><rect class="sp" x="426.3" y="17.5" width="2.7" height="45.0" rx="1.4"/><rect class="sp" x="430.6" y="32.2" width="2.7" height="15.6" rx="1.4"/><rect class="sp" x="434.8" y="29.9" width="2.7" height="20.1" rx="1.4"/><rect class="sp" x="439.1" y="27.5" width="2.7" height="25.0" rx="1.4"/><rect class="sp" x="443.3" y="19.3" width="2.7" height="41.4" rx="1.4"/><rect class="sp" x="447.6" y="33.6" width="2.7" height="12.7" rx="1.4"/><rect class="sp" x="451.8" y="28.0" width="2.7" height="24.0" rx="1.4"/><rect class="sp" x="456.1" y="27.1" width="2.7" height="25.8" rx="1.4"/><rect class="sp" x="460.3" y="23.3" width="2.7" height="33.3" rx="1.4"/><rect class="ps long" x="464.6" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps long" x="468.9" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps long" x="473.1" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps long" x="477.4" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps long" x="481.6" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps long" x="485.9" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps long" x="490.1" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps long" x="494.4" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="sp" x="498.6" y="15.3" width="2.7" height="49.3" rx="1.4"/><rect class="sp" x="502.9" y="15.6" width="2.7" height="48.8" rx="1.4"/><rect class="sp" x="507.1" y="29.2" width="2.7" height="21.6" rx="1.4"/><rect class="sp" x="511.4" y="27.0" width="2.7" height="26.1" rx="1.4"/><rect class="sp" x="515.7" y="28.6" width="2.7" height="22.8" rx="1.4"/><rect class="sp" x="519.9" y="20.6" width="2.7" height="38.8" rx="1.4"/><rect class="sp" x="524.2" y="20.9" width="2.7" height="38.2" rx="1.4"/><rect class="sp" x="528.4" y="33.0" width="2.7" height="14.0" rx="1.4"/><rect class="ps long" x="532.7" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps long" x="536.9" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps long" x="541.2" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps long" x="545.4" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps long" x="549.7" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps long" x="554.0" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps long" x="558.2" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps long" x="562.5" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps long" x="566.7" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="ps long" x="571.0" y="39.0" width="2.7" height="2.0" rx="1.4"/><rect class="sp" x="575.2" y="30.8" width="2.7" height="18.5" rx="1.4"/><rect class="sp" x="579.5" y="29.9" width="2.7" height="20.1" rx="1.4"/><rect class="sp" x="583.7" y="30.4" width="2.7" height="19.2" rx="1.4"/><rect class="sp" x="588.0" y="26.5" width="2.7" height="27.0" rx="1.4"/><rect class="sp" x="592.3" y="26.0" width="2.7" height="28.1" rx="1.4"/><rect class="sp" x="596.5" y="31.5" width="2.7" height="16.9" rx="1.4"/><line class="mk" x1="383.0" x2="383.0" y1="0" y2="80"/></svg>
+      <i class="wsweep"></i>
+    </div>
+    <div class="tags"><span>Pauses longer</span><span>Answers shorter</span><span>Pace slower</span></div>
+    <div class="obs"><b>What the trainer reads afterwards</b>After the price question, her pauses got longer and her answers shorter than earlier in this session. That could be a point worth revisiting.</div>
+    <div class="mem">
+      <div><b>Session 1</b>Opening practiced</div>
+      <div><b>Session 2</b>Objections</div>
+      <div class="now"><b>Session 3</b>Today</div>
+    </div>
+    <div class="memnote">Compared only with her own sessions.</div>
+  </div>
+ </div>
+</header>
+
+<section class="ex">
+ <div class="wrap">
+  <div class="num"><b>01</b><i></i>Inside ToolboxVR</div>
+  <h2 class="rv">3 ways it could show up in your worlds.</h2>
+  <div class="cards">
+    <div class="card rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></div><h3>Practice conversations</h3><p>A trainee practices a customer conversation with one of your characters. The character could notice when her pauses get longer and give her room. Afterwards, the trainer could read what was observed, in careful language: “could”, never “is”.</p></div>
+    <div class="card rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 19h4v-4h4v-4h4V7h4"/><circle cx="20" cy="5" r="1.6"/></svg></div><h3>Progress over weeks</h3><p>Next session, the character could remember where she got stuck and pick up right there. Her progress would be measured only against herself, never against the class.</p></div>
+    <div class="card rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M6 20V4h9l3 3v13"/><path d="M4 20h16"/><circle cx="13" cy="12" r="1"/></svg></div><h3>Onboarding and guided tours</h3><p>A guide character could remember what each new hire asked last week and build on it, so the second visit doesn't start from zero.</p></div>
+  </div>
+  <p class="aside rv">These are examples. Where it fits best in your worlds, you know better than we do.</p>
+ </div>
+</section>
+
+<section class="devs">
+ <div class="wrap">
+  <div class="num"><b>02</b><i></i>On each device</div>
+  <h2 class="rv">In the headset, it listens. On a screen, it also sees.</h2>
+  <div class="dev-grid">
+    <div class="dev rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-4l-2-2.5h-2L9 16H5a2 2 0 0 1-2-2z"/></svg></div><h3>VR headset</h3><p>The headset covers the face, so perception runs on the voice: pace, pauses, pitch and melody. Our voice-only configuration works with the audio alone.</p>
+      <div class="chan"><span class="on">Voice</span><span class="off">Face</span><span class="off">Posture</span></div></div>
+    <div class="dev rv"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M9 20h6M12 16v4"/><circle cx="12" cy="10" r="2.2"/></svg></div><h3>Desktop, tablet, phone</h3><p>With a camera, it reads face, voice and posture together. Each channel adds to the others.</p>
+      <div class="chan"><span class="on">Voice</span><span class="on">Face</span><span class="on">Posture</span></div></div>
+  </div>
+  <div class="keep rv">Image and sound are discarded the instant they're measured. What's kept is the trace, never the recording.</div>
+  <a class="maplink rv" href="https://onioko.com/signals.html" target="_blank" rel="noopener"><span><b>Signal map: Every signal we measure, its source and where it lands</b><small>180 signals · 7 layers · 4 consent contexts · 0 hidden · German version</small></span><span class="ar">→</span></a>
+ </div>
+</section>
+
+<section class="law">
+ <div class="wrap">
+  <div class="num"><b>03</b><i></i>EU AI Act</div>
+  <h2 class="rv">Signals, never emotion labels.</h2>
+  <p class="lead rv">Article 5(1)(f) of the EU AI Act is about workplaces and education institutions, the settings vocational and corporate training take place in. Our technology doesn't guess what a learner feels. It measures signals, finds patterns, and leaves the meaning to a person.</p>
+  <div class="quote rv"><b>Article 5(1)(f) prohibits</b> AI systems “to infer emotions of a natural person in the areas of workplace and education institutions”, except for medical or safety reasons.</div>
+  <div class="flow">
+    <div class="rv"><div class="n">1</div><h3>Signal</h3><p>Face, voice and posture as numbers. No emotion labels.</p></div>
+    <div class="rv"><div class="n">2</div><h3>Pattern</h3><p>What changes within one session, each with a confidence value.</p></div>
+    <div class="rv"><div class="n">3</div><h3>Plain language</h3><p>Careful wording: “Could”, never “is”.</p></div>
+    <div class="rv"><div class="n">4</div><h3>A person decides</h3><p>The trainer remains the accountable interpreter.</p></div>
+  </div>
+  <div class="rules rv">
+    <div><i>1</i><span>Chosen moments instead of always-on capture</span></div>
+    <div><i>2</i><span>Consent, revocation, deletion that actually deletes</span></div>
+    <div><i>3</i><span>Observable signals instead of emotion labels or hidden mental states</span></div>
+    <div><i>4</i><span>Provenance, timestamps, uncertainty made visible</span></div>
+    <div><i>5</i><span>Separation of fact, interpretation and hypothesis</span></div>
+    <div><i>6</i><span>The human remains the accountable interpreter</span></div>
+  </div>
+  <p class="fine rv">EU AI Act-aware configurations are available. This page explains our design rationale and isn't legal advice: How you deploy it stays your assessment, and we'll go through it with you.</p>
+ </div>
+</section>
+
+<section class="data">
+ <div class="wrap">
+  <div class="num"><b>04</b><i></i>Data and integration</div>
+  <h2 class="rv">ToolboxVR stays in front.</h2>
+  <div class="dgrid">
+    <div class="rv"><h3>Your worlds, your characters, your brand</h3><p>ONIOKO would run behind them as the perception and memory layer. Learners would see ToolboxVR.</p></div>
+    <div class="rv"><h3>Your learners' data stays yours</h3><p>Nothing is sold to third parties. How it's used and retained is agreed in writing with you.</p></div>
+    <div class="rv"><h3>Integration as a layer</h3><p>Partners integrate ONIOKO into their own system. Documentation: <a href="https://docs.onioko.com" target="_blank" rel="noopener">docs.onioko.com</a>.</p></div>
+    <div class="rv"><h3>Running today</h3><p>The same technology works in our Extended Avatars, live in video calls.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="cta">
+ <div class="wrap">
+  <div class="ctabox rv">
+    <div class="num"><b>05</b><i></i>Next step</div>
+    <h2>An intro call with our founder.</h2>
+    <p>Juan Schubert shows it live on a real conversation and answers the compliance questions directly.</p>
+    <a class="btn" href="https://cal.onioko.com" target="_blank" rel="noopener">Book the intro call →</a>
+    <div class="sig"><b>Juan Schubert</b> · Founder, ONIOKO · j.schubert@onioko.com</div>
+  </div>
+ </div>
+</section>
+
+</main>
+<footer class="wrap">ONIOKO · Extended Human Cognition · EXIDEUS LLC · Brief overview for ToolboxVR, November 2026. The session on this page is an example. ToolboxVR is a product of Digital Toolbox GmbH.</footer>
+<script>
+(function(){var els=document.querySelectorAll('.rv');if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{rootMargin:'0px 0px -8% 0px',threshold:.12});
+els.forEach(function(e){io.observe(e)});})();
+</script>
+</body>
+</html>
